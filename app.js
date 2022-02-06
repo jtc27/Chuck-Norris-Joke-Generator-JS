@@ -11,11 +11,22 @@ function getJokes(e){
     if(this.status === 200){
       const response = JSON.parse(this.responseText);
       console.log(response)
+
+      let output = ``;
+      if(response.type ==='success'){
+        response.value.forEach(function(joke){
+          output += `<li>${joke.joke}</li>`
+        })
+      } else {
+        output += '<li>Something went wrong</li>'
+      }
+
+      //inserts HTML into the index, using the iterations of output
+      document.querySelector('.jokes').innerHTML = output
     }
   }
 
   xhr.send()
-
 
   e.preventDefault();
 }
