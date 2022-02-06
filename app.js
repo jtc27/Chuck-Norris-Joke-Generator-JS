@@ -9,7 +9,7 @@ function getJokes(e){
 
   xhr.onload = function(){
     if(this.status === 200){
-      const response = this.responseText;
+      const response = JSON.parse(this.responseText);
       console.log(response)
     }
   }
